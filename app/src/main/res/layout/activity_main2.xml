@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="com.lvqingyang.jianshu.Main2Activity">
+
+    <LinearLayout
+        android:id="@+id/ll_menu"
+        android:layout_width="160dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#1d1d1d"
+        android:layout_marginLeft="-160dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:gravity="center"
+            android:text="今日"
+            android:textColor="@android:color/white"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:gravity="center"
+            android:text="随机"
+            android:textColor="@android:color/white"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:gravity="center"
+            android:text="我的收藏"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+            <ImageView
+                android:id="@+id/iv_menu"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/ic_dehaze"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_centerInParent="true"
+                android:text="白水青菜"
+                android:textColor="#1d1d1d"/>
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:letterSpacing="0.1"
+            android:lineSpacingMultiplier="1.2"
+            android:text="      他进门的时候，客厅里没有她的身影。他微微一笑，向厨房走去。她果然在，正在用饭勺搅电饭锅里的饭。她总是这样做，盛饭之前要把电饭锅里的饭彻底搅翻一下。他曾经问为什么，她说：“好把多余的水分去掉，口感才好啊。”显然她是听见了开门的声音。
+
+饭冒着蒸汽，她的脸有一瞬隐在水气里。他闻到了饭香。
+
+饭很香。奇怪的是，他在别的地方几乎闻不到这种香。这是好米才有的香味。他知道她只用一个牌子的米，东北产的，很贵，因为是有机栽培。
+
+好米只是密闭着的香味，要加适量的水，浸适度的时间，然后用好的电饭煲煮，跳到保温之后，焖合适的时间，香味才会爆发出来，毫无保留，就像一个个储满香膏的小瓶子打破了一样。
+
+她是他遇到的最会煮饭的女人。他这样说过，她回答：我尊重米。
+
+在他笑起来之前，她又加了一句：不过只尊重好的米。"/>
+    </LinearLayout>
+</LinearLayout>
