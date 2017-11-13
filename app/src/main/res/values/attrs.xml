@@ -3,4 +3,10 @@
     <declare-styleable name="PieView">
         <attr name="startAngle" format="float"/>
     </declare-styleable>
+
+    <declare-styleable name="SearchView">
+        <attr name="stroke_width" format="dimension"/>
+        <attr name="color" format="color"/>
+        <attr name="anim_time" format="integer"/>
+    </declare-styleable>
 </resources>

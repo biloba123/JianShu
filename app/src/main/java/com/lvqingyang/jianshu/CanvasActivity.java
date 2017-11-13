@@ -2,20 +2,34 @@ package com.lvqingyang.jianshu;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 public class CanvasActivity extends AppCompatActivity {
 
-    private PieView pieview;
     private android.widget.EditText ettel;
     private android.widget.RadioButton rbcontral1;
     private android.widget.RadioButton rbcontral2;
     private android.widget.RadioGroup rg;
     private CubicBezier cb;
+    private CanvasView cv;
+    private android.widget.Button btn;
+    private PlaneView pv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_canvas);
+        this.pv = (PlaneView) findViewById(R.id.pv);
+        this.btn = (Button) findViewById(R.id.btn);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                cv.startAnim();
+                pv.startAnim();
+            }
+        });
 //        this.cb = (CubicBezier) findViewById(R.id.cb);
 //        this.rg = (RadioGroup) findViewById(R.id.rg);
 //        this.rbcontral2 = (RadioButton) findViewById(R.id.rb_contral2);

@@ -1,11 +1,13 @@
 package com.lvqingyang.jianshu;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PathMeasure;
 import android.graphics.Picture;
-import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -21,22 +23,30 @@ import android.view.View;
  * @github https://github.com/biloba123
  * @blog https://biloba123.github.io/
  */
-public class CanvasView extends View
-//        implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener
-{
+public class CanvasView extends View {
     private Paint mPaint;
     private static final String TAG = "CanvasView";
     private Picture mPicture=new Picture();
     private GestureDetector mGestureDetector;
+    private Path path;
+    private Path dst;
 
 
     public CanvasView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mPaint=new Paint();
-        mPaint.setStrokeWidth(10);
-        mPaint.setStyle(Paint.Style.FILL);
+        mPaint.setStrokeWidth(20);
+        mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setTextSize(100);
+
+        path=new Path();
+//        RectF rectF=new RectF(-400, -400, 400, 400);
+        float pos= (float) (200*Math.sin(Math.PI/4));
+        path.moveTo(pos+160, pos+160);
+        path.lineTo(pos, pos);
+        path.addCircle(0, 0, 200, Path.Direction.CW);
+        dst=new Path();
 
 //        mGestureDetector=new GestureDetector(context, this);//实现OnGestureListener接口
 //        mGestureDetector.setIsLongpressEnabled(false);//解决长按屏幕无法拖动的现象
@@ -55,7 +65,7 @@ public class CanvasView extends View
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
+    protected void onDraw(final Canvas canvas) {
         super.onDraw(canvas);
 //        Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.img);
 //        canvas.drawBitmap(bitmap, new Matrix(), null);
@@ -106,20 +116,42 @@ public class CanvasView extends View
 //        canvas.drawText(text, rectF.centerX(), baseline, textPaint);
 
         canvas.translate(getMeasuredWidth()/2, getMeasuredHeight()/2);
-        Path path=new Path();
-        RectF rectF=new RectF(-400, -400, 400, 400);
-        path.addArc(rectF, 90, 180);
 
-        Path path1=new Path();
-        path1.addCircle(0, -200, 200, Path.Direction.CW);
-
-        Path path2=new Path();
-        path2.addCircle(0, 200, 200, Path.Direction.CW);
-
-        path.op(path1, Path.Op.UNION);
-        path.op(path2, Path.Op.DIFFERENCE);
-
+        mPaint.setColor(Color.CYAN);
         canvas.drawPath(path, mPaint);
+        mPaint.setColor(Color.BLUE);
+        canvas.drawPath(dst, mPaint);
+//        path.addArc(rectF, 90, 180);
+//
+//        Path path1=new Path();
+//        path1.addCircle(0, -200, 200, Path.Direction.CW);
+//
+//        Path path2=new Path();
+//        path2.addCircle(0, 200, 200, Path.Direction.CW);
+//
+//        path.op(path1, Path.Op.UNION);
+//        path.op(path2, Path.Op.DIFFERENCE);
+
+
+
+
+    }
+
+    public void startAnim(){
+        final PathMeasure measure=new PathMeasure(path, false);
+        ValueAnimator animator=ValueAnimator.ofFloat(0f, 1f)
+                .setDuration(2000);
+        final float p1=measure.getLength();
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                dst.reset();
+                float stop=p1*((float)animation.getAnimatedValue());
+                measure.getSegment(0, stop, dst, true);
+                postInvalidate();
+            }
+        });
+        animator.start();
     }
 
 //    private void recording() {
