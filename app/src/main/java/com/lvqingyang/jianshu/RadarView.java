@@ -20,7 +20,7 @@ import android.view.View;
  * @blog https://biloba123.github.io/
  */
 public class RadarView extends View {
-    private int mCount=6;
+    private int mCount=8;
     private float mAngle = 360/mCount;
     private float mAngleRad = (float) (Math.PI*2/mCount);
     private float mRadius;
@@ -29,7 +29,7 @@ public class RadarView extends View {
 //    private Bitmap mBitmap;
     private float mMaxValue=100f;
     private float[] mData=new float[]{
-            90, 70, 85, 75, 95, 80
+            90, 70, 85, 75, 95, 80, 99, 89
     };
     private Paint mValuePaint;
     private String[] mTitles=new String[]{
