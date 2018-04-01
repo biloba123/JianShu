@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.lvqingyang.jianshu.HorizontalScrollViewEx
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="32dp"
-    android:background="@color/accent_grey"
+    android:orientation="vertical"
     tools:context="com.lvqingyang.jianshu.ConflictActivity">
 
-    <View
-        android:layout_width="120dp"
-        android:layout_height="240dp"
-        android:background="@color/accent_blue"/>
+    <Button
+        android:id="@+id/btn_show_window"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="show window"/>
 
-    <View
-        android:layout_height="200dp"
-        android:layout_width="100dp"
-        android:layout_margin="64dp"
-        android:background="@color/accent_green"/>
+    <Button
+        android:id="@+id/btn_start_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="start Activity"/>
 
-    <View
-        android:layout_height="400dp"
-        android:layout_width="100dp"
-        android:background="@color/accent_red"/>
-
-</com.lvqingyang.jianshu.HorizontalScrollViewEx>
+</LinearLayout>
